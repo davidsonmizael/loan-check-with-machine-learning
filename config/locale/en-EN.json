@@ -1,0 +1,12 @@
+{
+    "messages":{
+        "explicit_content_found": "The image contains explicit content.",
+        "explicit_content_not_found": "The image does not contain explicit content.",
+        "face_found": "Face found.",
+        "face_not_found": "Not able to find a face in the image.",
+        "too_many_faces": "Too many faces detected in the image.",
+        "accessory_found": "Accessories are not allowed.",
+        "blurred_image": "Image blurred.",
+        "image_ok": "Image approved"
+    }
+}

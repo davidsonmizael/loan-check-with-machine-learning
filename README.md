@@ -33,6 +33,22 @@ Enable the following APIs in order to run the project. Note: Your billing must b
 - https://console.cloud.google.com/apis/api/vision.googleapis.com/
 
 
+## Azure Cloud <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/1200px-Microsoft_Azure.svg.png" width="16" height="16">
+
+The Azure ML solutions will be used here to get predicted values for the person age and gender, and create landmarks on the image for both the face and face features.
+
+<details>
+  <summary>Disclaimer</summary>
+    I know that Azure could be used here for face recognition instead of GCLoud, but I wanted to use both clouds, so I split the duty. If you want you can easily remove the GCloud integration and keep using only the Azure one.
+</details>
+
+### Services to create on Azure:
+
+Setup a cognitive service for the Face API. The setup is pretty straight forward.
+
+- https://portal.azure.com/#blade/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/Face
+
+
 ## Running tests with Pytest-cov
 
 Once in the project folder, run the following command to generate a HTML with the coverage of the tests in the project.

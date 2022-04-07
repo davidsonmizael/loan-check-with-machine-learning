@@ -76,8 +76,8 @@ def submit_credit_analysis():
         cas.selfie_calculated_landmarks = str(predicted_facebox) if predicted_facebox else None
         cas.selfie_calculated_facial_features = str(predicted_facial_features) if predicted_facial_features else None
 
-        predicted_facial_features = None
-        if is_image_safe: 
+        image_with_landmarks = None
+        if is_image_safe and predicted_facebox and predicted_facial_features: 
             image_with_landmarks = add_azure_landmarks_to_base64_image(body['selfie_image'], predicted_facebox, predicted_facial_features)
             cas.selfie_image_with_landmarks = str(image_with_landmarks)
 

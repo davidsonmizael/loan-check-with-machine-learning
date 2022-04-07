@@ -7,6 +7,9 @@
         "too_many_faces": "Muitos rostos detectados na imagem.",
         "accessory_found": "Acessórios não são permitidos na imagem.",
         "blurred_image": "Imagem embaçada.",
-        "image_ok": "Imagem aprovada"
+        "image_ok": "Imagem aprovada",
+        "age_does_not_match": "A idade inserida não corresponde com a idade interpretada na imagem.",
+        "gender_does_not_match": "O gênero inserido não corresponde com o gênero interpretado na imagem.",
+        "api_fields_does_not_match": "O corpo do request não tem todos os campos requiridos."
     }
 }

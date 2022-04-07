@@ -7,6 +7,9 @@
         "too_many_faces": "Too many faces detected in the image.",
         "accessory_found": "Accessories are not allowed.",
         "blurred_image": "Image blurred.",
-        "image_ok": "Image approved"
+        "image_ok": "Image approved",
+        "age_does_not_match": "The input age doesn't match the age interpreted from the image.",
+        "gender_does_not_match": "The input gender doesn't match the gender interpreted from the image.",
+        "api_fields_does_not_match": "Body request does not have all the required fields"
     }
 }

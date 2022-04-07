@@ -57,6 +57,8 @@ def submit_credit_analysis():
         
         is_image_safe, message, predicted_age, predicted_gender, predicted_facebox, predicted_facial_features = analyse_customer_selfie(body, body['selfie_image'])
 
+        message = get_message(language, message)
+
         cas = CreditAnalysisSubmission()
         cas.create_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         cas.age = body['age']
@@ -70,7 +72,7 @@ def submit_credit_analysis():
         cas.scorlarship = body['scorlarship']
         cas.selfie_image = body['selfie_image']
         cas.image_safe = is_image_safe
-        cas.image_analysis_result = get_message(language, message)
+        cas.image_analysis_result = message
         cas.predicted_age = predicted_age
         cas.predicted_gender = predicted_gender.value if predicted_gender else None
         cas.selfie_calculated_landmarks = str(predicted_facebox) if predicted_facebox else None
@@ -82,6 +84,9 @@ def submit_credit_analysis():
             cas.selfie_image_with_landmarks = str(image_with_landmarks)
 
         db.session.add(cas)
-        db.session.commit()  
-    
-        return jsonify(status="OK", language=language, is_image_safe=is_image_safe, image_with_landmarks=image_with_landmarks)
+        db.session.commit()
+
+        if image_with_landmarks:
+            return jsonify(status="OK", language=language, is_image_safe=is_image_safe, image_with_landmarks=image_with_landmarks)
+        else:
+            return jsonify(status="OK", language=language, is_image_safe=is_image_safe, message=message)

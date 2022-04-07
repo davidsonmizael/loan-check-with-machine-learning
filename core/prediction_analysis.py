@@ -33,3 +33,13 @@ def check_if_image_contains_explicit_content(predicted_values):
             return True, "{messages.explicit_content_found}"
 
     return False, "{messages.explicit_content_not_found}"
+
+def check_if_user_input_matches_predicted_values(input_age, input_gender,predicted_age, predicted_gender):
+
+    if input_age > (predicted_age + 5) or input_age < (predicted_age - 5): #default as 5 per request, but could be a flexible value
+        return False, "{messages.age_does_not_match}"
+
+    if input_gender.lower() != predicted_gender.value:
+        return False, "{messages.gender_does_not_match}"
+
+    return True, "{messages.image_ok}"

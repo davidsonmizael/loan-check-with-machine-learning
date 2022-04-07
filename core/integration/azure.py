@@ -37,3 +37,15 @@ def get_face_landmarks_base64(base64_image):
     face = detected_faces[0]
 
     return face.face_rectangle, face.face_landmarks
+
+def transform_face_landmarks_on_dict(face_landmarks):
+
+    output_dict = {}
+
+    for attr in vars(face_landmarks):
+        dot = getattr(face_landmarks, attr)
+
+        if isinstance(dot, face_landmarks):
+            output_dict[attr] = {"x": dot.x, "y": dot.y}
+
+    return output_dict

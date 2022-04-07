@@ -5,6 +5,7 @@ from core.database import db
 from datetime import datetime
 from core.applyance_analysis import analyse_customer_selfie
 from core.image_manipulation import add_azure_landmarks_to_base64_image
+from core.integration.azure import transform_face_landmarks_on_dict
 
 from sqlalchemy import Column, Integer, String
 class CreditAnalysisSubmission(db.Model):
@@ -76,7 +77,7 @@ def submit_credit_analysis():
         cas.predicted_age = predicted_age
         cas.predicted_gender = predicted_gender.value if predicted_gender else None
         cas.selfie_calculated_landmarks = str(predicted_facebox) if predicted_facebox else None
-        cas.selfie_calculated_facial_features = str(predicted_facial_features) if predicted_facial_features else None
+        cas.selfie_calculated_facial_features = str(transform_face_landmarks_on_dict(predicted_facial_features)) if predicted_facial_features else None
 
         image_with_landmarks = None
         if is_image_safe and predicted_facebox and predicted_facial_features: 

@@ -39,7 +39,7 @@ The Azure ML solutions will be used here to get predicted values for the person 
 
 <details>
   <summary>Disclaimer</summary>
-    I know that Azure could be used here for face recognition instead of GCLoud, but I wanted to use both clouds, so I split the duty. If you want you can easily remove the GCloud integration and keep using only the Azure one.
+    I know that Azure could have been used here for face recognition instead of GCLoud, but I wanted to use both clouds at the same time. If you want you can easily remove the GCloud integration and keep using only Azure.
 </details>
 
 ### Services to create on Azure:

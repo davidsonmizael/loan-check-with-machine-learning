@@ -87,6 +87,6 @@ def submit_credit_analysis():
         db.session.commit()
 
         if image_with_landmarks:
-            return jsonify(status="OK", language=language, is_image_safe=is_image_safe, image_with_landmarks=image_with_landmarks)
+            return jsonify(status="OK", language=language, is_image_approved=is_image_safe, image_with_landmarks=image_with_landmarks)
         else:
-            return jsonify(status="OK", language=language, is_image_safe=is_image_safe, message=message)
+            return jsonify(status="OK", language=language, is_image_approved=is_image_safe, message=message)

@@ -1,1 +1,1 @@
-from . import *
+from .bp_credit_analysis import blueprint as bp_credit_analysis

@@ -1,5 +1,10 @@
 python-dotenv
 google-cloud-vision
+azure-cognitiveservices-vision-face
 gunicorn
 pytest
 pytest-cov
+pillow
+flask
+sqlalchemy
+flask-sqlalchemy

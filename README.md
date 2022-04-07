@@ -9,7 +9,7 @@ Check if you have python 3.7 installed on your machine, if not, install it.
 After that run the following commands:
 
 ```sh
-$ virtualenv venv --python/usr/bin/python3.7 # or /usr/bin/python3 if that's the only python you have
+$ virtualenv venv --python=/usr/bin/python3.7 # or /usr/bin/python3 if that's the only python you have
 $ ln -s venv/bin/activate .
 $ . ./activate
 $ python -m pip install --upgrade pip

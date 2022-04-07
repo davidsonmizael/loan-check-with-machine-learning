@@ -2,7 +2,9 @@
 
 This project intent is to analyse the user appliance to a loan using face recognition and other Machine Learning models.
 
-## Creating a virtual environment
+## Running the project <img src="https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-512.png" width="16" height="16">
+
+### Creating a virtual environment
 
 Check if you have python 3.7 installed on your machine, if not, install it.
 
@@ -15,6 +17,22 @@ $ . ./activate
 $ python -m pip install --upgrade pip
 $ pip install .
 ```
+### Starting the server
+
+This will make the app start at the port 5555 as default.
+
+```sh
+$ python run.py
+```
+
+### Starting the server with gunicorn
+
+For this usage, two environment variables can be set to bind the application to a host and port, the variable names should be `FLASK_HOST` and `FLASK_PORT` respectively.
+
+```sh
+$ gunicorn wsgi:app wsgi.py 
+```
+
 
 ## Google Cloud <img src="https://www.gstatic.com/devrel-devsite/prod/v0e0f589edd85502a40d78d7d0825db8ea5ef3b99ab4070381ee86977c9168730/cloud/images/favicons/onecloud/favicon.ico" width="16" height="16">
 

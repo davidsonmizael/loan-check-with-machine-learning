@@ -10,6 +10,8 @@
         "image_ok": "Image approved",
         "age_does_not_match": "The input age doesn't match the age interpreted from the image.",
         "gender_does_not_match": "The input gender doesn't match the gender interpreted from the image.",
-        "api_fields_does_not_match": "Body request does not have all the required fields"
+        "api_fields_does_not_match": "Body request does not have all the required fields",
+        "credit_approved": "Credit approved!",
+        "credit_not_approved": "Credit not approved."
     }
 }

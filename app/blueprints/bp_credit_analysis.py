@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, request
 from core.locale import get_message
 from core.database import db
 from datetime import datetime
-from core.applyance_analysis import analyse_customer_selfie
+from core.applyance_analysis import analyse_customer_eligibility
 from core.image_manipulation import add_azure_landmarks_to_base64_image
 from core.integration.azure import transform_face_landmarks_on_dict
 
@@ -29,6 +29,9 @@ class CreditAnalysisSubmission(db.Model):
     image_analysis_result = Column(String)
     predicted_age = Column(Integer)
     predicted_gender = Column(String)
+    predicted_default_with_ethnicity = Column(Integer)
+    predicted_default_without_ethnicity = Column(Integer)
+    credit_approved = Column(Integer)
 
 blueprint = Blueprint('credit_analysis_handler', __name__)
 
@@ -56,7 +59,7 @@ def submit_credit_analysis():
 
         language = body['language'] if 'language' in body else 'en-EN'
         
-        is_image_safe, message, predicted_age, predicted_gender, predicted_facebox, predicted_facial_features = analyse_customer_selfie(body, body['selfie_image'])
+        is_image_safe, credit_approved, prediction_with_ethnicity, prediction_without_ethnicity, message, predicted_age, predicted_gender, predicted_facebox, predicted_facial_features = analyse_customer_eligibility(body, body['selfie_image'])
 
         message = get_message(language, message)
 
@@ -78,6 +81,9 @@ def submit_credit_analysis():
         cas.predicted_gender = predicted_gender.value if predicted_gender else None
         cas.selfie_calculated_landmarks = str(predicted_facebox) if predicted_facebox else None
         cas.selfie_calculated_facial_features = str(transform_face_landmarks_on_dict(predicted_facial_features)) if predicted_facial_features else None
+        cas.predicted_default_with_ethnicity = prediction_with_ethnicity
+        cas.predicted_default_without_ethnicity = prediction_without_ethnicity
+        cas.credit_approved = credit_approved
 
         image_with_landmarks = None
         if is_image_safe and predicted_facebox and predicted_facial_features: 
@@ -88,6 +94,6 @@ def submit_credit_analysis():
         db.session.commit()
 
         if image_with_landmarks:
-            return jsonify(status="OK", language=language, is_image_approved=is_image_safe, image_with_landmarks=image_with_landmarks)
+            return jsonify(status="OK", language=language, is_image_approved=is_image_safe, credit_approved=credit_approved, image_with_landmarks=image_with_landmarks)
         else:
-            return jsonify(status="OK", language=language, is_image_approved=is_image_safe, message=message)
+            return jsonify(status="OK", language=language, is_image_approved=is_image_safe, credit_approved=credit_approved, message=message)

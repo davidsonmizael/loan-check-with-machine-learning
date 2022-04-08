@@ -10,6 +10,8 @@
         "image_ok": "Imagem aprovada",
         "age_does_not_match": "A idade inserida não corresponde com a idade interpretada na imagem.",
         "gender_does_not_match": "O gênero inserido não corresponde com o gênero interpretado na imagem.",
-        "api_fields_does_not_match": "O corpo do request não tem todos os campos requiridos."
+        "api_fields_does_not_match": "O corpo do request não tem todos os campos requiridos.",
+        "credit_approved": "Credito aprovado!",
+        "credit_not_approved": "Credito não aprovado."
     }
 }

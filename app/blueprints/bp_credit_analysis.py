@@ -26,7 +26,7 @@ class CreditAnalysisSubmission(db.Model):
     selfie_calculated_landmarks = Column(String)
     selfie_calculated_facial_features = Column(String)
     image_safe = Column(Integer)
-    image_analysis_result = Column(String)
+    analysis_result = Column(String)
     predicted_age = Column(Integer)
     predicted_gender = Column(String)
     predicted_default_with_ethnicity = Column(Integer)
@@ -76,7 +76,7 @@ def submit_credit_analysis():
         cas.scorlarship = body['scorlarship']
         cas.selfie_image = body['selfie_image']
         cas.image_safe = is_image_safe
-        cas.image_analysis_result = message
+        cas.analysis_result = message
         cas.predicted_age = predicted_age
         cas.predicted_gender = predicted_gender.value if predicted_gender else None
         cas.selfie_calculated_landmarks = str(predicted_facebox) if predicted_facebox else None

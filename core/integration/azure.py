@@ -64,4 +64,8 @@ def call_credit_predict_model_api(model_api, request_data):
     }
 
     result = post_request(model_api, headers=headers, data=data)
-    return result['content']['predict'][0]
+    try:
+        response = result['content']['predict'][0]
+        return response
+    except:
+        raise Exception(f"Request failed. Response: {result}")
